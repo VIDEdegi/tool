@@ -1,303 +1,315 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37P2WQXF6B"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-37P2WQXF6B"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  gtag('config', 'G-37P2WQXF6B');
+  gtag('config', 'G-37P2WQXF6B');
 </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QRコードリーダー - 高速・シンプルな読み取り</title>
-  
-  <link rel="icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QRコードリーダー - 高速・シンプルな読み取り</title>
+  
+  <link rel="icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
 
-  <meta property="og:url" content="https://videdegi.github.io/tool/qr-reader/"> <meta property="og:type" content="website">
-  <meta property="og:title" content="QRコードリーダー - 高速・シンプルな読み取り">
-  <meta property="og:description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。">
-  <meta property="og:image" content="https://your-qr-reader-url.com/ogp-image.jpg"> <meta property="og:site_name" content="QRコードリーダー">
-  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://videdegi.github.io/tool/qr-reader/"> <meta property="og:type" content="website">
+  <meta property="og:title" content="QRコードリーダー - 高速・シンプルな読み取り">
+  <meta property="og:description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。">
+  <meta property="og:image" content="https://your-qr-reader-url.com/ogp-image.jpg"> <meta property="og:site_name" content="QRコードリーダー">
+  <meta property="og:locale" content="ja_JP">
 
-  <meta name="description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。スマートフォンやPCで利用可能。">
-  <meta name="keywords" content="QRコード, QRコードリーダー, スキャン, カメラ, オンライン, 無料, URL読み取り, ウェブアプリ">
-  <link rel="canonical" href="https://videdegi.github.io/tool/qr-reader/"> <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-    #video-container {
-      position: relative;
-      width: 80%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      overflow: hidden;
-      background-color: #000;
-    }
-    #video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .controls {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    button, select {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    a {
-      color: blue;
-      text-decoration: underline;
-    }
-    #result-screen {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: white;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-      z-index: 1000;
-    }
-    #result-content {
-      padding: 20px;
-      border: 1px solid #ccc;
-      background-color: #f0f0f0;
-      max-width: 80%;
-      word-wrap: break-word;
-      text-align: center;
-    }
-    #rescan-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+  <meta name="description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。スマートフォンやPCで利用可能。">
+  <meta name="keywords" content="QRコード, QRコードリーダー, スキャン, カメラ, オンライン, 無料, URL読み取り, ウェブアプリ">
+  <link rel="canonical" href="https://videdegi.github.io/tool/qr-reader/"> <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 60px; /* Add margin for footer */
+    }
+    #video-container {
+      position: relative;
+      width: 80%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      background-color: #000;
+    }
+    #video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button, select {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+    #result-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+    #result-content {
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      max-width: 80%;
+      word-wrap: break-word;
+      text-align: center;
+    }
+    #rescan-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+    }
 
-    @media (max-width: 600px) {
-      button, select {
-        font-size: 14px;
-        padding: 8px 12px;
-      }
-      #video-container {
-        width: 95%;
-      }
-      #result-content {
-        max-width: 95%;
-        font-size: 14px;
-      }
-    }
-  </style>
+    @media (max-width: 600px) {
+      button, select {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      #video-container {
+        width: 95%;
+      }
+      #result-content {
+        max-width: 95%;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>QRコードリーダー</h1>
+  <h1>QRコードリーダー</h1>
 
-  <div id="video-container">
-    <video id="video" autoplay playsinline></video>
-  </div>
+  <div id="video-container">
+    <video id="video" autoplay playsinline></video>
+  </div>
 
-  <div class="controls">
-    <button id="startButton">カメラを起動</button>
-    <button id="stopButton" disabled>カメラを停止</button>
-    <select id="cameraSelect" style="display: none;"></select>
-    <button id="switchCameraButton" style="display: none;">カメラ切り替え</button>
-  </div>
+  <div class="controls">
+    <button id="startButton">カメラを起動</button>
+    <button id="stopButton" disabled>カメラを停止</button>
+    <select id="cameraSelect" style="display: none;"></select>
+    <button id="switchCameraButton" style="display: none;">カメラ切り替え</button>
+  </div>
 
-  <div id="result-screen">
-    <h2>読み取り結果</h2>
-    <div id="result-content"></div>
-    <button id="rescan-button">もう一度読み取る</button>
-  </div>
+  <div id="result-screen">
+    <h2>読み取り結果</h2>
+    <div id="result-content"></div>
+    <button id="rescan-button">もう一度読み取る</button>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js" onerror="alert('jsQRの読み込みに失敗しました');"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js" onerror="alert('jsQRの読み込みに失敗しました');"></script>
 
-  <script>
-    const video = document.getElementById('video');
-    const startButton = document.getElementById('startButton');
-    const stopButton = document.getElementById('stopButton');
-    const cameraSelect = document.getElementById('cameraSelect');
-    const switchCameraButton = document.getElementById('switchCameraButton');
-    const resultScreen = document.getElementById('result-screen');
-    const resultContent = document.getElementById('result-content');
-    const rescanButton = document.getElementById('rescan-button');
+  <script>
+    const video = document.getElementById('video');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const cameraSelect = document.getElementById('cameraSelect');
+    const switchCameraButton = document.getElementById('switchCameraButton');
+    const resultScreen = document.getElementById('result-screen');
+    const resultContent = document.getElementById('result-content');
+    const rescanButton = document.getElementById('rescan-button');
 
-    let stream = null;
-    let animationFrameId = null;
-    let scanning = false;
-    let availableCameras = [];
-    let currentCameraId = null;
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    let stream = null;
+    let animationFrameId = null;
+    let scanning = false;
+    let availableCameras = [];
+    let currentCameraId = null;
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
 
-    const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
+    const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
 
-    async function populateCameraList() {
-      try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        availableCameras = devices.filter(device => device.kind === 'videoinput');
+    async function populateCameraList() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        availableCameras = devices.filter(device => device.kind === 'videoinput');
 
-        if (availableCameras.length > 1) {
-          cameraSelect.style.display = 'inline-block';
-          switchCameraButton.style.display = 'inline-block';
-        } else {
-          cameraSelect.style.display = 'none';
-          switchCameraButton.style.display = 'none';
-        }
+        if (availableCameras.length > 1) {
+          cameraSelect.style.display = 'inline-block';
+          switchCameraButton.style.display = 'inline-block';
+        } else {
+          cameraSelect.style.display = 'none';
+          switchCameraButton.style.display = 'none';
+        }
 
-        cameraSelect.innerHTML = '';
-        availableCameras.forEach((device, index) => {
-          const option = document.createElement('option');
-          option.value = device.deviceId;
-          option.text = device.label || `カメラ ${index + 1}`;
-          cameraSelect.appendChild(option);
-        });
+        cameraSelect.innerHTML = '';
+        availableCameras.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `カメラ ${index + 1}`;
+          cameraSelect.appendChild(option);
+        });
 
-        if (availableCameras.length > 0) {
-          currentCameraId = availableCameras[0].deviceId;
-        }
-      } catch (error) {
-        console.error('カメラ列挙失敗:', error);
-      }
-    }
+        if (availableCameras.length > 0) {
+          currentCameraId = availableCameras[0].deviceId;
+        }
+      } catch (error) {
+        console.error('カメラ列挙失敗:', error);
+      }
+    }
 
-    async function startCamera(deviceId) {
-      startButton.disabled = true;
-      stopButton.disabled = false;
-      switchCameraButton.disabled = false;
-      cameraSelect.disabled = false;
+    async function startCamera(deviceId) {
+      startButton.disabled = true;
+      stopButton.disabled = false;
+      switchCameraButton.disabled = false;
+      cameraSelect.disabled = false;
 
-      if (typeof jsQR === 'undefined') {
-        alert('jsQRが読み込まれていません');
-        startButton.disabled = false;
-        stopButton.disabled = true;
-        return;
-      }
+      if (typeof jsQR === 'undefined') {
+        alert('jsQRが読み込まれていません');
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        return;
+      }
 
-      try {
-        if (stream) {
-          stream.getTracks().forEach(track => track.stop());
-        }
+      try {
+        if (stream) {
+          stream.getTracks().forEach(track => track.stop());
+        }
 
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: deviceId ? { exact: deviceId } : true },
-          audio: false
-        });
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { deviceId: deviceId ? { exact: deviceId } : true },
+          audio: false
+        });
 
-        video.srcObject = stream;
-        await video.play();
+        video.srcObject = stream;
+        await video.play();
 
-        scanning = true;
-        currentCameraId = deviceId || stream.getVideoTracks()[0]?.getSettings().deviceId;
-        cameraSelect.value = currentCameraId;
+        scanning = true;
+        currentCameraId = deviceId || stream.getVideoTracks()[0]?.getSettings().deviceId;
+        cameraSelect.value = currentCameraId;
 
-        scan();
-      } catch (error) {
-        console.error('カメラ起動失敗:', error);
-        startButton.disabled = false;
-        stopButton.disabled = true;
-      }
-    }
+        scan();
+      } catch (error) {
+        console.error('カメラ起動失敗:', error);
+        startButton.disabled = false;
+        stopButton.disabled = true;
+      }
+    }
 
-    function stopCamera() {
-      scanning = false;
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-        video.srcObject = null;
-      }
-      resultScreen.style.display = 'none';
-      startButton.disabled = false;
-      stopButton.disabled = true;
-      switchCameraButton.disabled = true;
-      cameraSelect.disabled = true;
-    }
+    function stopCamera() {
+      scanning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+      }
+      resultScreen.style.display = 'none';
+      startButton.disabled = false;
+      stopButton.disabled = true;
+      switchCameraButton.disabled = true;
+      cameraSelect.disabled = true;
+    }
 
-    function scan() {
-      if (!scanning) return;
+    function scan() {
+      if (!scanning) return;
 
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        const code = jsQR(imageData.data, imageData.width, imageData.height);
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height);
 
-        if (code) {
-          displayResultScreen(code.data);
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-          return;
-        }
-      }
+        if (code) {
+          displayResultScreen(code.data);
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+          return;
+        }
+      }
 
-      animationFrameId = requestAnimationFrame(scan);
-    }
+      animationFrameId = requestAnimationFrame(scan);
+    }
 
-    function displayResultScreen(result) {
-      scanning = false;
-      if (urlRegex.test(result)) {
-        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> <a href="${result}" target="_blank" rel="noopener noreferrer">${result}</a></p>`;
-      } else {
-        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> ${result}</p>`;
-      }
-      resultScreen.style.display = 'flex';
-    }
+    function displayResultScreen(result) {
+      scanning = false;
+      if (urlRegex.test(result)) {
+        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> <a href="${result}" target="_blank" rel="noopener noreferrer">${result}</a></p>`;
+      } else {
+        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> ${result}</p>`;
+      }
+      resultScreen.style.display = 'flex';
+    }
 
-    startButton.addEventListener('click', async () => {
-      await populateCameraList();
-      startCamera(currentCameraId);
-    });
+    startButton.addEventListener('click', async () => {
+      await populateCameraList();
+      startCamera(currentCameraId);
+    });
 
-    stopButton.addEventListener('click', () => {
-      stopCamera();
-    });
+    stopButton.addEventListener('click', () => {
+      stopCamera();
+    });
 
-    switchCameraButton.addEventListener('click', () => {
-      const selectedCameraId = cameraSelect.value;
-      if (selectedCameraId && selectedCameraId !== currentCameraId) {
-        startCamera(selectedCameraId);
-      } else if (availableCameras.length > 0) {
-        const currentIndex = availableCameras.findIndex(cam => cam.deviceId === currentCameraId);
-        const nextIndex = (currentIndex + 1) % availableCameras.length;
-        const nextCameraId = availableCameras[nextIndex].deviceId;
-        startCamera(nextCameraId);
-      }
-    });
+    switchCameraButton.addEventListener('click', () => {
+      const selectedCameraId = cameraSelect.value;
+      if (selectedCameraId && selectedCameraId !== currentCameraId) {
+        startCamera(selectedCameraId);
+      } else if (availableCameras.length > 0) {
+        const currentIndex = availableCameras.findIndex(cam => cam.deviceId === currentCameraId);
+        const nextIndex = (currentIndex + 1) % availableCameras.length;
+        const nextCameraId = availableCameras[nextIndex].deviceId;
+        startCamera(nextCameraId);
+      }
+    });
 
-    cameraSelect.addEventListener('change', event => {
-      startCamera(event.target.value);
-    });
+    cameraSelect.addEventListener('change', event => {
+      startCamera(event.target.value);
+    });
 
-    rescanButton.addEventListener('click', () => {
-      resultScreen.style.display = 'none';
-      scanning = true;
-      if (!animationFrameId) {
-        scan();
-      }
-    });
+    rescanButton.addEventListener('click', () => {
+      resultScreen.style.display = 'none';
+      scanning = true;
+      if (!animationFrameId) {
+        scan();
+      }
+    });
 
-    populateCameraList();
-  </script>
+    populateCameraList();
+  </script>
+
+  <footer>
+    © VIDEdegi <br>
+    <a href="https://lit.link/videdegi" target="_blank" rel="noopener noreferrer">https://lit.link/videdegi</a><br>
+    <a href="https://www.videdegi.pgw.jp/" target="_blank" rel="noopener noreferrer">https://www.videdegi.pgw.jp/</a>
+  </footer>
 </body>
 </html>
