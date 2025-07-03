@@ -12,7 +12,7 @@
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    'https://www.googlgetagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PLGQRJ3H');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,23 +22,16 @@
 
     <meta name="description" content="ウェブカメラでQRコードを読み取るリーダーをはじめ、日常生活や仕事で役立つ便利なツールをまとめたサイトです。無料で使えるツールが満載！">
     <meta name="keywords" content="便利ツール, QRコードリーダー, QRコード, ウェブカメラ, 無料ツール, 作業効率化, 日常生活, 仕事">
-    <link rel="canonical" href="[このページのURLをここに入力してください]">
-
-    <meta property="og:title" content="便利ツールまとめ | QRコードリーダーなど役立つツールを紹介">
+    <link rel="canonical" href="https://videdegi.github.io/tool/"> <meta property="og:title" content="便利ツールまとめ | QRコードリーダーなど役立つツールを紹介">
     <meta property="og:description" content="ウェブカメラでQRコードを読み取るリーダーをはじめ、日常生活や仕事で役立つ便利なツールをまとめたサイトです。無料で使えるツールが満載！">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://videdegi.github.io/tool/">
-    <meta property="og:image" content="[OGP画像URLをここに入力してください - 例: https://example.com/ogp-image.jpg]">
-    <meta property="og:site_name" content="便利ツールまとめ">
+    <meta property="og:url" content="https://videdegi.github.io/tool/"> <meta property="og:image" content="[OGP画像URLをここに入力してください - 例: https://example.com/ogp-image.jpg]"> <meta property="og:site_name" content="便利ツールまとめ">
     <meta property="og:locale" content="ja_JP">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@videdegi">
-    <meta name="twitter:title" content="便利ツールまとめ | QRコードリーダーなど役立つツールを紹介">
+    <meta name="twitter:site" content=""> <meta name="twitter:title" content="便利ツールまとめ | QRコードリーダーなど役立つツールを紹介">
     <meta name="twitter:description" content="ウェブカメラでQRコードを読み取るリーダーをはじめ、日常生活や仕事で役立つ便利なツールをまとめたサイトです。無料で使えるツールが満載！">
-    <meta name="twitter:image" content="[OGP画像URLをここに入力してください - 例: https://example.com/ogp-image.jpg]">
-
-    <style>
+    <meta name="twitter:image" content="[OGP画像URLをここに入力してください - 例: https://example.com/ogp-image.jpg]"> <style>
         body {
             font-family: sans-serif;
             line-height: 1.6;
@@ -46,6 +39,9 @@
             padding: 20px;
             background-color: #f4f4f4;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* フッターをページ下部に固定するための設定 */
         }
         .container {
             max-width: 800px;
@@ -54,6 +50,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-grow: 1; /* コンテンツがフッターの上に伸びるように設定 */
         }
         header {
             text-align: center;
@@ -107,17 +104,30 @@
         .tool-item a:hover {
             background-color: #0056b3;
         }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLGQRJ3H"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
-        <header>
-            <p>&copy; VIDEdegi</p>
-            <p><a href="https://lit.link/videdegi" target="_blank">https://lit.link/videdegi</a></p>
-        </header>
-
         <h1>便利ツールまとめ</h1>
         <p>このサイトでは、日常生活や仕事に役立つ便利なツールをまとめています！</p>
 
@@ -130,5 +140,11 @@
         </div>
 
         </div>
+
+    <footer>
+        <p>&copy; VIDEdegi</p>
+        <p><a href="https://lit.link/videdegi" target="_blank">https://lit.link/videdegi</a></p>
+        <p>HomePage: <a href="https://www.videdegi.pgw.jp/" target="_blank">https://www.videdegi.pgw.jp/</a></p>
+    </footer>
 </body>
 </html>
