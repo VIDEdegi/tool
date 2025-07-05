@@ -97,6 +97,25 @@
     margin-bottom: 0.5em;
   }
 
+  h4 {
+  font-weight: 600; /* h2やh3と同様に少し太めに */
+  font-size: 1.1rem; /* h3 (1.2rem) より少し小さく、本文よりは大きく */
+  color: #FD7130; /* メインカラーを継承 */
+  margin-top: 20px; /* 上部に適切な余白 */
+  margin-bottom: 10px; /* 下部に適切な余白 */
+  /* 必要に応じて下線やパディングを追加することも可能ですが、
+     h4はコンテンツ内の小見出しとして使うことが多いため、シンプルが良いでしょう */
+}
+
+/* レスポンシブ調整（必要であれば） */
+@media (max-width: 480px) {
+  h4 {
+    font-size: 1rem; /* スマホではさらに小さく */
+    margin-top: 15px;
+    margin-bottom: 8px;
+  }
+}
+
   /* フッター */
   footer {
     margin-top: auto; /* コンテンツが短くてもフッターが下に来るように */
