@@ -54,6 +54,15 @@
     text-align: center;
   }
 
+  h1 a {
+  color: inherit; /* 親要素の色を継承 */
+  text-decoration: none; /* デフォルトの下線をなくす */
+}
+
+h1 a:hover {
+  text-decoration: underline; /* ホバーで下線を表示 */
+}
+
   /* コンテンツコンテナ */
   .content-container {
     background-color: #fff;
@@ -185,7 +194,7 @@
 
 </head>
 <body>
-  <h1><a href="https://videdegi.github.io/tool/" target="_self">利用規約・プライバシーポリシー</a></h1>
+  <h1><a href="https://videdegi.github.io/tool/" target="_self" title="ツールまとめサイトを開く">利用規約・プライバシーポリシー</a></h1>
 
   <div class="content-container">
     <h2>利用規約</h2>
