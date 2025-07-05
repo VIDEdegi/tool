@@ -17,85 +17,122 @@
   <meta name="description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。スマートフォンやPCで利用可能。">
   <meta name="keywords" content="QRコード, QRコードリーダー, スキャン, カメラ, オンライン, 無料, URL読み取り, ウェブアプリ">
   <link rel="canonical" href="https://videdegi.github.io/tool/qr-reader/"> <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-    #video-container {
-      position: relative;
-      width: 80%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      overflow: hidden;
-      background-color: #000;
-    }
-    #video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .controls {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    button, select {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    a {
-      color: blue;
-      text-decoration: underline;
-    }
-    #result-screen {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: white;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-      z-index: 1000;
-    }
-    #result-content {
-      padding: 20px;
-      border: 1px solid #ccc;
-      background-color: #f0f0f0;
-      max-width: 80%;
-      word-wrap: break-word;
-      text-align: center;
-    }
-    #rescan-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+/* ベーススタイル */
+:root {
+  /* カラーパレット */
+  --primary-text-color: #000;
+  --secondary-text-color: blue;
+  --border-color: #ccc;
+  --background-color-dark: #000;
+  --background-color-light: #f0f0f0;
+  --white-color: #fff;
 
-    @media (max-width: 600px) {
-      button, select {
-        font-size: 14px;
-        padding: 8px 12px;
-      }
-      #video-container {
-        width: 95%;
-      }
-      #result-content {
-        max-width: 95%;
-        font-size: 14px;
-      }
-    }
+  /* スペーシング */
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px; /* result-screen の top, left などで考慮 */
+
+  /* フォントサイズ */
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--spacing-medium);
+}
+
+/* ビデオコンテナ */
+#video-container {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background-color: var(--background-color-dark);
+}
+
+#video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* コントロールボタンとセレクトボックス */
+.controls {
+  display: flex;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-small);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button,
+select {
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+}
+
+/* リンク */
+a {
+  color: var(--secondary-text-color);
+  text-decoration: underline;
+}
+
+/* 結果表示画面 */
+#result-screen {
+  display: none; /* 初期状態では非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white-color);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-medium);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+#result-content {
+  padding: var(--spacing-medium);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color-light);
+  max-width: 80%;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+#rescan-button {
+  margin-top: var(--spacing-medium);
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+  button,
+  select {
+    font-size: var(--font-size-small);
+    padding: 8px 12px; /* 変数定義と少し異なるため、個別に指定 */
+  }
+
+  #video-container {
+    width: 95%;
+  }
+
+  #result-content {
+    max-width: 95%;
+    font-size: var(--font-size-small);
+  }
+}
   </style>
 </head>
 <body>
