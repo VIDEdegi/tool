@@ -162,19 +162,27 @@
 
   /* フッター */
 footer {
-  margin-top: 40px; /* ← autoを数値に変更 */
-  padding: 20px 0 10px;
-  font-size: 0.85rem;
-  color: #666;
-  text-align: center;
-  user-select: none;
+    /* Existing footer styles */
+    margin-top: 40px;
+    padding: 20px 0 10px;
+    font-size: 0.85rem; /* Base font size for the footer */
+    color: #666;
+    text-align: center;
+    user-select: none;
 }
 
-  footer a {
+footer div { /* Add a div around the copyright and links in your HTML for better targeting */
+    font-size: 1.1rem; /* Adjust this value as needed */
+    line-height: 1.8; /* Improve line spacing if needed */
+}
+
+footer a {
+    /* Existing footer a styles */
     color: #FD7130;
     text-decoration: none;
     margin: 0 6px;
-  }
+    font-size: inherit; /* Inherit font size from parent div */
+}
 
   footer a:hover {
     text-decoration: underline;
@@ -399,11 +407,14 @@ footer {
     populateCameraList();
   </script>
 
-  <footer>
-  © VIDEdegi <br>
-  <a href="https://lit.link/videdegi" target="_blank" rel="noopener noreferrer">運営者情報</a><br>
-  <a href="https://www.videdegi.pgw.jp/" target="_blank" rel="noopener noreferrer">ホームページ</a><br>
-  <a href="tool/terms-privacy.html" target="_blank" rel="noopener noreferrer">利用規約・プライバシーポリシー</a>
-  </footer>
+<footer>
+    QRコードは(株)デンソーウェーブの登録商標です
+    <div>
+        © VIDEdegi <br>
+        <a href="https://lit.link/videdegi" target="_blank" rel="noopener noreferrer">運営者情報</a><br>
+        <a href="https://www.videdegi.pgw.jp/" target="_blank" rel="noopener noreferrer">ホームページ</a><br>
+        <a href="tool/terms-privacy.html" target="_blank" rel="noopener noreferrer">利用規約・プライバシーポリシー</a>
+    </div>
+</footer>
 </body>
 </html>
