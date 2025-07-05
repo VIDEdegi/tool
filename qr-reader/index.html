@@ -56,6 +56,15 @@
     text-shadow: 1px 1px 3px rgba(253, 113, 48, 0.3);
   }
 
+    h1 a {
+  color: inherit; /* 親要素の色を継承 */
+  text-decoration: none; /* デフォルトの下線をなくす */
+}
+
+h1 a:hover {
+  text-decoration: underline; /* ホバーで下線を表示 */
+}
+
   /* 動画コンテナ */
   #video-container {
     position: relative;
@@ -215,7 +224,7 @@ footer a {
 
 </head>
 <body>
-  <h1><a href="https://videdegi.github.io/tool/" target="_self">QRコードリーダー</a></h1>
+  <h1><a href="https://videdegi.github.io/tool/" target="_self" title="ツールまとめサイトを開く">QRコードリーダー</a></h1>
 
   <div id="video-container">
     <video id="video" autoplay playsinline></video>
