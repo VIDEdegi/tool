@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QRコードリーダー - 高速・シンプルな読み取り</title>
   
-  <link rel="icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="https://vide-digi.blogspot.com/favicon.ico" type="image/x-icon">
+　<link rel="icon" href="qr-reader/image/rogo.svg" type="image/svg+xml">
 
   <meta property="og:url" content="https://videdegi.github.io/tool/qr-reader/"> <meta property="og:type" content="website">
   <meta property="og:title" content="QRコードリーダー - 高速・シンプルな読み取り">
@@ -46,20 +45,21 @@ body {
 }
 
 /* ビデオコンテナ */
-#video-container {
-  position: relative;
-  width: 80%;
-  max-width: 500px;
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  background-color: var(--background-color-dark);
+.camera-frame {
+      position: relative;
+      width: 80%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      background-color: #000;
 }
 
 #video {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
+
 
 /* コントロールボタンとセレクトボックス */
 .controls {
@@ -138,9 +138,10 @@ a {
 <body>
   <h1>QRコードリーダー</h1>
 
-  <div id="video-container">
-    <video id="video" autoplay playsinline></video>
-  </div>
+<div class="camera-frame">
+  <video id="video" autoplay playsinline></video>
+</div>
+
 
   <div class="controls">
     <button id="startButton">カメラを起動</button>
