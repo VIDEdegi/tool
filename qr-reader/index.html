@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QRコードリーダー - 高速・シンプルな読み取り</title>
-  
-　<link rel="icon" href="qr-reader/image/rogo.svg" type="image/svg+xml">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QRコードリーダー - 高速・シンプルな読み取り</title>
+  
+  <link rel="icon" href="image/rogo.svg" type="image/svg+xml">
 
-  <meta property="og:url" content="https://videdegi.github.io/tool/qr-reader/"> <meta property="og:type" content="website">
-  <meta property="og:title" content="QRコードリーダー - 高速・シンプルな読み取り">
-  <meta property="og:description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。">
-  <meta property="og:image" content="https://your-qr-reader-url.com/ogp-image.jpg"> <meta property="og:site_name" content="QRコードリーダー">
-  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://videdegi.github.io/tool/qr-reader/"> <meta property="og:type" content="website">
+  <meta property="og:title" content="QRコードリーダー - 高速・シンプルな読み取り">
+  <meta property="og:description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。">
+  <meta property="og:image" content="https://your-qr-reader-url.com/ogp-image.jpg"> <meta property="og:site_name" content="QRコードリーダー">
+  <meta property="og:locale" content="ja_JP">
 
-  <meta name="description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。スマートフォンやPCで利用可能。">
-  <meta name="keywords" content="QRコード, QRコードリーダー, スキャン, カメラ, オンライン, 無料, URL読み取り, ウェブアプリ">
-  <link rel="canonical" href="https://videdegi.github.io/tool/qr-reader/"> <style>
-/* ベーススタイル */
+  <meta name="description" content="ウェブカメラを使ってQRコードを素早く正確に読み取ります。URLの自動検出とリンク表示機能付き。スマートフォンやPCで利用可能。">
+  <meta name="keywords" content="QRコード, QRコードリーダー, スキャン, カメラ, オンライン, 無料, URL読み取り, ウェブアプリ">
+  <link rel="canonical" href="https://videdegi.github.io/tool/qr-reader/"> <style>
 :root {
-  /* カラーパレット */
   --primary-text-color: #000;
   --secondary-text-color: blue;
   --border-color: #ccc;
@@ -26,12 +24,10 @@
   --background-color-light: #f0f0f0;
   --white-color: #fff;
 
-  /* スペーシング */
   --spacing-small: 10px;
   --spacing-medium: 20px;
-  --spacing-large: 40px; /* result-screen の top, left などで考慮 */
+  --spacing-large: 40px;
 
-  /* フォントサイズ */
   --font-size-base: 16px;
   --font-size-small: 14px;
 }
@@ -44,24 +40,23 @@ body {
   margin-top: var(--spacing-medium);
 }
 
-/* ビデオコンテナ */
 .camera-frame {
-      position: relative;
-      width: 80%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      overflow: hidden;
-      background-color: #000;
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  background-color: #000;
+  padding-top: 0;
 }
 
 #video {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
-
-/* コントロールボタンとセレクトボックス */
 .controls {
   display: flex;
   gap: var(--spacing-small);
@@ -77,15 +72,13 @@ select {
   cursor: pointer;
 }
 
-/* リンク */
 a {
   color: var(--secondary-text-color);
   text-decoration: underline;
 }
 
-/* 結果表示画面 */
 #result-screen {
-  display: none; /* 初期状態では非表示 */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -116,16 +109,11 @@ a {
   cursor: pointer;
 }
 
-/* レスポンシブデザイン */
 @media (max-width: 600px) {
   button,
   select {
     font-size: var(--font-size-small);
-    padding: 8px 12px; /* 変数定義と少し異なるため、個別に指定 */
-  }
-
-  #video-container {
-    width: 95%;
+    padding: 8px 12px;
   }
 
   #result-content {
@@ -133,200 +121,180 @@ a {
     font-size: var(--font-size-small);
   }
 }
-  </style>
+  </style>
 </head>
 <body>
-  <h1>QRコードリーダー</h1>
+  <h1>QRコードリーダー</h1>
 
 <div class="camera-frame">
-  <video id="video" autoplay playsinline></video>
+  <video id="video" autoplay playsinline></video>
 </div>
 
 
-  <div class="controls">
-    <button id="startButton">カメラを起動</button>
-    <button id="stopButton" disabled>カメラを停止</button>
-    <select id="cameraSelect" style="display: none;"></select>
-    <button id="switchCameraButton" style="display: none;">カメラ切り替え</button>
-  </div>
+  <div class="controls">
+    <button id="startButton">カメラを起動</button>
+    <button id="stopButton" disabled>カメラを停止</button>
+    <select id="cameraSelect" style="display: none;"></select>
+    <button id="switchCameraButton" style="display: none;">カメラ切り替え</button>
+  </div>
 
-  <div id="result-screen">
-    <h2>読み取り結果</h2>
-    <div id="result-content"></div>
-    <button id="rescan-button">もう一度読み取る</button>
-  </div>
+  <div id="result-screen">
+    <h2>読み取り結果</h2>
+    <div id="result-content"></div>
+    <button id="rescan-button">もう一度読み取る</button>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js" onerror="alert('jsQRの読み込みに失敗しました');"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js" onerror="alert('jsQRの読み込みに失敗しました');"></script>
 
-  <script>
-    const video = document.getElementById('video');
-    const startButton = document.getElementById('startButton');
-    const stopButton = document.getElementById('stopButton');
-    const cameraSelect = document.getElementById('cameraSelect');
-    const switchCameraButton = document.getElementById('switchCameraButton');
-    const resultScreen = document.getElementById('result-screen');
-    const resultContent = document.getElementById('result-content');
-    const rescanButton = document.getElementById('rescan-button');
+  <script>
+    const video = document.getElementById('video');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const cameraSelect = document.getElementById('cameraSelect');
+    const switchCameraButton = document.getElementById('switchCameraButton');
+    const resultScreen = document.getElementById('result-screen');
+    const resultContent = document.getElementById('result-content');
+    const rescanButton = document.getElementById('rescan-button');
 
-    let stream = null;
-    let animationFrameId = null;
-    let scanning = false;
-    let availableCameras = [];
-    let currentCameraId = null;
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    let stream = null;
+    let animationFrameId = null;
+    let scanning = false;
+    let availableCameras = [];
+    let currentCameraId = null;
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
 
-    const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
+    const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
 
-    async function populateCameraList() {
-      try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        availableCameras = devices.filter(device => device.kind === 'videoinput');
+    async function populateCameraList() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        availableCameras = devices.filter(device => device.kind === 'videoinput');
 
-        if (availableCameras.length > 1) {
-          cameraSelect.style.display = 'inline-block';
-          switchCameraButton.style.display = 'inline-block';
-        } else {
-          cameraSelect.style.display = 'none';
-          switchCameraButton.style.display = 'none';
-        }
+        if (availableCameras.length > 1) {
+          cameraSelect.style.display = 'inline-block';
+          switchCameraButton.style.display = 'inline-block';
+        } else {
+          cameraSelect.style.display = 'none';
+          switchCameraButton.style.display = 'none';
+        }
 
-        cameraSelect.innerHTML = '';
-        availableCameras.forEach((device, index) => {
-          const option = document.createElement('option');
-          option.value = device.deviceId;
-          option.text = device.label || `カメラ ${index + 1}`;
-          cameraSelect.appendChild(option);
-        });
+        cameraSelect.innerHTML = '';
+        availableCameras.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `カメラ ${index + 1}`;
+          cameraSelect.appendChild(option);
+        });
 
-        if (availableCameras.length > 0) {
-          currentCameraId = availableCameras[0].deviceId;
-        }
-      } catch (error) {
-        console.error('カメラ列挙失敗:', error);
-      }
-    }
+        if (availableCameras.length > 0) {
+          currentCameraId = availableCameras[0].deviceId;
+        }
+      } catch (error) {
+        console.error('カメラ列挙失敗:', error);
+      }
+    }
 
-    async function startCamera(deviceId) {
-      startButton.disabled = true;
-      stopButton.disabled = false;
-      switchCameraButton.disabled = false;
-      cameraSelect.disabled = false;
+    async function startCamera(deviceId) {
+      startButton.disabled = true;
+      stopButton.disabled = false;
+      switchCameraButton.disabled = false;
+      cameraSelect.disabled = false;
 
-      if (typeof jsQR === 'undefined') {
-        alert('jsQRが読み込まれていません');
-        startButton.disabled = false;
-        stopButton.disabled = true;
-        return;
-      }
+      if (typeof jsQR === 'undefined') {
+        alert('jsQRが読み込まれていません');
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        return;
+      }
 
-      try {
-        if (stream) {
-          stream.getTracks().forEach(track => track.stop());
-        }
+      try {
+        if (stream) {
+          stream.getTracks().forEach(track => track.stop());
+        }
 
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: deviceId ? { exact: deviceId } : true },
-          audio: false
-        });
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { deviceId: deviceId ? { exact: deviceId } : true },
+          audio: false
+        });
 
-        video.srcObject = stream;
-        await video.play();
+        video.srcObject = stream;
+        await video.play();
 
-        scanning = true;
-        currentCameraId = deviceId || stream.getVideoTracks()[0]?.getSettings().deviceId;
-        cameraSelect.value = currentCameraId;
+        scanning = true;
+        currentCameraId = deviceId || stream.getVideoTracks()[0]?.getSettings().deviceId;
+        cameraSelect.value = currentCameraId;
 
-        scan();
-      } catch (error) {
-        console.error('カメラ起動失敗:', error);
-        startButton.disabled = false;
-        stopButton.disabled = true;
-      }
-    }
+        scan();
+      } catch (error) {
+        console.error('カメラ起動失敗:', error);
+        startButton.disabled = false;
+        stopButton.disabled = true;
+      }
+    }
 
-    function stopCamera() {
-      scanning = false;
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-        video.srcObject = null;
-      }
-      resultScreen.style.display = 'none';
-      startButton.disabled = false;
-      stopButton.disabled = true;
-      switchCameraButton.disabled = true;
-      cameraSelect.disabled = true;
-    }
+    function stopCamera() {
+      scanning = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+      }
+      resultScreen.style.display = 'none';
+      startButton.disabled = false;
+      stopButton.disabled = true;
+      switchCameraButton.disabled = true;
+      cameraSelect.disabled = true;
+    }
 
-    function scan() {
-      if (!scanning) return;
+    function displayResultScreen(result) {
+      scanning = false;
+      if (urlRegex.test(result)) {
+        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> <a href="${result}" target="_blank" rel="noopener noreferrer">${result}</a></p>`;
+      } else {
+        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> ${result}</p>`;
+      }
+      resultScreen.style.display = 'flex';
+      stopCamera(); 
+    }
 
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        const code = jsQR(imageData.data, imageData.width, imageData.height);
+    startButton.addEventListener('click', async () => {
+      await populateCameraList();
+      startCamera(currentCameraId);
+    });
 
-        if (code) {
-          displayResultScreen(code.data);
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-          return;
-        }
-      }
+    stopButton.addEventListener('click', () => {
+      stopCamera();
+    });
 
-      animationFrameId = requestAnimationFrame(scan);
-    }
+    switchCameraButton.addEventListener('click', () => {
+      const selectedCameraId = cameraSelect.value;
+      if (selectedCameraId && selectedCameraId !== currentCameraId) {
+        startCamera(selectedCameraId);
+      } else if (availableCameras.length > 0) {
+        const currentIndex = availableCameras.findIndex(cam => cam.deviceId === currentCameraId);
+        const nextIndex = (currentIndex + 1) % availableCameras.length;
+        const nextCameraId = availableCameras[nextIndex].deviceId;
+        startCamera(nextCameraId);
+      }
+    });
 
-    function displayResultScreen(result) {
-      scanning = false;
-      if (urlRegex.test(result)) {
-        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> <a href="${result}" target="_blank" rel="noopener noreferrer">${result}</a></p>`;
-      } else {
-        resultContent.innerHTML = `<p><strong>読み取り成功:</strong> ${result}</p>`;
-      }
-      resultScreen.style.display = 'flex';
-    }
+    cameraSelect.addEventListener('change', event => {
+      startCamera(event.target.value);
+    });
 
-    startButton.addEventListener('click', async () => {
-      await populateCameraList();
-      startCamera(currentCameraId);
-    });
+    rescanButton.addEventListener('click', () => {
+      resultScreen.style.display = 'none';
+      scanning = true;
+      if (!animationFrameId) {
+        startCamera(currentCameraId);
+      }
+    });
 
-    stopButton.addEventListener('click', () => {
-      stopCamera();
-    });
-
-    switchCameraButton.addEventListener('click', () => {
-      const selectedCameraId = cameraSelect.value;
-      if (selectedCameraId && selectedCameraId !== currentCameraId) {
-        startCamera(selectedCameraId);
-      } else if (availableCameras.length > 0) {
-        const currentIndex = availableCameras.findIndex(cam => cam.deviceId === currentCameraId);
-        const nextIndex = (currentIndex + 1) % availableCameras.length;
-        const nextCameraId = availableCameras[nextIndex].deviceId;
-        startCamera(nextCameraId);
-      }
-    });
-
-    cameraSelect.addEventListener('change', event => {
-      startCamera(event.target.value);
-    });
-
-    rescanButton.addEventListener('click', () => {
-      resultScreen.style.display = 'none';
-      scanning = true;
-      if (!animationFrameId) {
-        scan();
-      }
-    });
-
-    populateCameraList();
-  </script>
+    populateCameraList();
+  </script>
 </body>
 </html>
