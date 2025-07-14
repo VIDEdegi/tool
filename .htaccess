@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^videdegi\.github\.io$ [NC]
+RewriteRule ^tool/?$ https://tool.videdegi.com/ [L,R=301]
